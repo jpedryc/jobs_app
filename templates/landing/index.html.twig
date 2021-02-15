@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PHP Positions{% endblock %}
+
+{% block body %}
+    <h1 class="text-white bg-info">PHP Jobs Market</h1>
+
+    {% if app.user %}
+        <a href="{{ path('position_new') }}">Create new</a>
+    {% endif %}
+
+    {% for position in positions %}
+        <div class="py-4">
+            {{ include('landing/_position_element.html.twig', {position: position}) }}
+        </div>
+    {% else %}
+        <h3>No positions found</h3>
+    {% endfor %}
+
+{% endblock %}

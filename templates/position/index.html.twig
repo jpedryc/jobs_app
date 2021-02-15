@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Position index{% endblock %}
+
+{% block body %}
+    <h1>Position index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Github_guid</th>
+                <th>Type</th>
+                <th>Url</th>
+                <th>Created_at</th>
+                <th>Company</th>
+                <th>Company_url</th>
+                <th>Location</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>How_to_apply</th>
+                <th>Company_logo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for position in positions %}
+            <tr>
+                <td>{{ position.id }}</td>
+                <td>{{ position.githubGuid }}</td>
+                <td>{{ position.type }}</td>
+                <td>{{ position.url }}</td>
+                <td>{{ position.createdAt ? position.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ position.company }}</td>
+                <td>{{ position.companyUrl }}</td>
+                <td>{{ position.location }}</td>
+                <td>{{ position.title }}</td>
+                <td>{{ position.description }}</td>
+                <td>{{ position.howToApply }}</td>
+                <td>{{ position.companyLogo }}</td>
+                <td>
+                    <a href="{{ path('position_show', {'id': position.id}) }}">show</a>
+                    <a href="{{ path('position_edit', {'id': position.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('position_new') }}">Create new</a>
+{% endblock %}

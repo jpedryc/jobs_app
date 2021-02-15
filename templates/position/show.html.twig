@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Position{% endblock %}
+
+{% block body %}
+    <h1>Position</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ position.id }}</td>
+            </tr>
+            <tr>
+                <th>Github_guid</th>
+                <td>{{ position.githubGuid }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ position.type }}</td>
+            </tr>
+            <tr>
+                <th>Url</th>
+                <td>{{ position.url }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ position.createdAt ? position.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Company</th>
+                <td>{{ position.company }}</td>
+            </tr>
+            <tr>
+                <th>Company_url</th>
+                <td>{{ position.companyUrl }}</td>
+            </tr>
+            <tr>
+                <th>Location</th>
+                <td>{{ position.location }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ position.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ position.description }}</td>
+            </tr>
+            <tr>
+                <th>How_to_apply</th>
+                <td>{{ position.howToApply }}</td>
+            </tr>
+            <tr>
+                <th>Company_logo</th>
+                <td>{{ position.companyLogo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('position_index') }}">back to list</a>
+
+    <a href="{{ path('position_edit', {'id': position.id}) }}">edit</a>
+
+    {{ include('position/_delete_form.html.twig') }}
+{% endblock %}
